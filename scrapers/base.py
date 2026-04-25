@@ -1,5 +1,7 @@
 import re
 import hashlib
+import random
+import asyncio
 from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Any, ClassVar, Optional
@@ -46,6 +48,9 @@ class BaseScraper(ABC):
         return self._browser
 
     async def _stealth_get(self, url: str, wait_ms: int = 2000) -> str:
+        # Zufällige Pause gegen Bot-Detection
+        await asyncio.sleep(random.uniform(1.5, 4.5))
+        
         browser = await self._get_browser()
         page = await browser.new_page(user_agent=self.ua.random)
         try:
