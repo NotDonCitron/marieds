@@ -1,0 +1,9 @@
+playwright
+beautifulsoup4
+lxml
+httpx
+python-dotenv
+fake-useragent
+tenacity
+structlog
+rich
